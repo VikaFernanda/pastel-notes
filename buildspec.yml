@@ -1,0 +1,19 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      # No actual build commands are needed for a static website.
+      # We are just packaging the files for deployment.
+      - echo "Packaging application files..."
+
+artifacts:
+  # These are the files that will be bundled and sent to CodeDeploy.
+  files:
+    - index.html
+    - style.css
+    - script.js
+    - appspec.yml
+    - scripts/setup_nginx.sh
+  # This removes the directory structure, placing all files at the root of the output zip.
+  discard-paths: yes

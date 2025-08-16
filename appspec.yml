@@ -1,0 +1,21 @@
+version: 0.0
+os: linux
+
+# The 'files' section specifies where to copy the files from the artifact to the EC2 instance.
+files:
+  - source: /index.html
+    destination: /var/www/pastel-notes
+  - source: /style.css
+    destination: /var/www/pastel-notes
+  - source: /script.js
+    destination: /var/www/pastel-notes
+  - source: /scripts/setup_nginx.sh
+    destination: /tmp/ # A temporary location to store the script before execution.
+
+# The 'hooks' section defines scripts to run at different stages of the deployment.
+hooks:
+  # 'AfterInstall' runs after the files have been successfully copied to the destination.
+  AfterInstall:
+    - location: /tmp/setup_nginx.sh
+      timeout: 300
+      runas: root # The script needs root privileges to change permissions and restart services.
