@@ -1,0 +1,25 @@
+{
+    "family": "pastel-notes-task",
+    "executionRoleArn": "arn:aws:iam::<AWS_ACCOUNT_ID>:role/pastel-notes-ecs-task-exec-role",
+    "taskRoleArn": "arn:aws:iam::<AWS_ACCOUNT_ID>:role/pastel-notes-ecs-task-exec-role",
+    "networkMode": "awsvpc",
+    "requiresCompatibilities": [
+        "EC2"
+    ],
+    "cpu": "256",
+    "memory": "512",
+    "containerDefinitions": [
+        {
+            "name": "pastel-notes-app",
+            "image": "<IMAGE_NAME>",
+            "essential": true,
+            "portMappings": [
+                {
+                    "containerPort": 3000,
+                    "hostPort": 3000,
+                    "protocol": "tcp"
+                }
+            ]
+        }
+    ]
+}
