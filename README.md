@@ -41,9 +41,7 @@ pastel-notes/
 ├── start.sh                    # Container startup script
 ├── .dockerignore               # Docker build exclusions
 ├── README.md                   # This file
-├── FAQ.md                      # Frequently asked questions
-├── FILES_RELATIONSHIP.md       # File dependency documentation
-└── LOW_LEVEL_DESIGN.md         # Technical design document
+└── FAQ.md                      # Frequently asked questions
 ```
 
 ## Quick Start
@@ -201,3 +199,4 @@ Edit `frontend/tailwind.config.ts` to adjust colors, and `frontend/app/globals.c
 ## License
 
 MIT
+
