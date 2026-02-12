@@ -27,7 +27,9 @@ phases:
       - echo "Creating imageDetail.json file..."
       - printf '{"ImageURI":"%s"}' "$REPOSITORY_URI:$IMAGE_TAG" > imageDetail.json
       - echo "Injecting AWS Account ID into task definition..."
-      - sed -i "s/<AWS_ACCOUNT_ID>/$AWS_ACCOUNT_ID/g" taskdef.json
+      - sed -i "s/<AWS_ACCOUNT_ID>/$AWS_ACCOUNT_ID/g" taskdef.json      
+      - echo "Injecting Image URI into task definition..."
+      - sed -i "s|<IMAGE_NAME>|$REPOSITORY_URI:$IMAGE_TAG|g" taskdef.json
 
 artifacts:
   files:
