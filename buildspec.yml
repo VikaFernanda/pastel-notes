@@ -21,10 +21,11 @@ phases:
       - echo "Pushing the Docker images to ECR..."
       - docker push $REPOSITORY_URI:latest
       - docker push $REPOSITORY_URI:$IMAGE_TAG
-      - echo "Creating imagedefinitions.json file..."
-      - printf '[{"name":"pastel-notes-app","imageUri":"%s"}]' "$REPOSITORY_URI:$IMAGE_TAG" > imagedefinitions.json
+      - echo "Creating imageDetail.json file..."
+      - printf '{"ImageURI":"%s"}' "$REPOSITORY_URI:$IMAGE_TAG" > imageDetail.json
 
 artifacts:
   files:
-    - imagedefinitions.json
-    - appspec.yml
+    - imageDetail.json
+    - appspec.yaml
+    - taskdef.json
