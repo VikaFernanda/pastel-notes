@@ -6,5 +6,4 @@ Resources:
         TaskDefinition: <TASK_DEFINITION>
         LoadBalancerInfo:
           ContainerName: "pastel-notes-app"
-
           ContainerPort: 3000
