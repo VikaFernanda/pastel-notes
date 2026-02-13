@@ -198,5 +198,6 @@ Edit `frontend/tailwind.config.ts` to adjust colors, and `frontend/app/globals.c
 
 ## License
 
-MIT
+GNU GENERAL PUBLIC LICENSE
+
 
