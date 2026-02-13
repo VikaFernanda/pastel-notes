@@ -9,6 +9,9 @@ phases:
       - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
       - REPOSITORY_URI=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/pastel-notes-app
       - IMAGE_TAG=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+      - echo "Fetching EFS ID from SSM..."
+      - EFS_ID=$(aws ssm get-parameter --name "/pastel-notes/efs-id" --query "Parameter.Value" --output text)
+      - echo "EFS ID is $EFS_ID"
 
   build:
     commands:
@@ -30,6 +33,7 @@ phases:
       - sed -i "s/<AWS_ACCOUNT_ID>/$AWS_ACCOUNT_ID/g" taskdef.json      
       - echo "Injecting Image URI into task definition..."
       - sed -i "s|<IMAGE_NAME>|$REPOSITORY_URI:$IMAGE_TAG|g" taskdef.json
+      - sed -i "s/<EFS_ID>/$EFS_ID/g" taskdef.json
 
 artifacts:
   files:
