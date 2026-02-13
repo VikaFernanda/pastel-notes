@@ -1,0 +1,50 @@
+# Dependencies
+node_modules
+*/node_modules
+
+# Terraform project and files
+terraform/
+*.tf
+*.tfvars
+*.tfstate
+*.tfstate.backup
+*.lock.hcl
+
+# Build outputs
+frontend/.next
+frontend/out
+
+# Development files
+*.log
+.env
+.env.*
+!.env.example
+
+# Git
+.git
+.gitignore
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+.cursor
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Documentation
+*.md
+!README.md
+
+# Misc
+*.tgz
+coverage
+.nyc_output
+
+# CodePipeline
+appspec.yml
+buildspec.yml
+taskdef.json
