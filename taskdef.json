@@ -8,6 +8,15 @@
     ],
     "cpu": "256",
     "memory": "512",
+    "volumes": [
+        {
+            "name": "efs-storage",
+            "efsVolumeConfiguration": {
+                "fileSystemId": "<EFS_ID>", 
+                "rootDirectory": "/"
+            }
+        }
+    ],
     "containerDefinitions": [
         {
             "name": "pastel-notes-app",
@@ -18,6 +27,13 @@
                     "containerPort": 3000,
                     "hostPort": 3000,
                     "protocol": "tcp"
+                }
+            ],
+            "mountPoints": [
+                {
+                    "sourceVolume": "efs-storage",
+                    "containerPath": "/app/backend/data",
+                    "readOnly": false
                 }
             ]
         }
